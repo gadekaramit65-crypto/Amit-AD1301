@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Amit Gajanan Gadekar | Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+        /* your existing CSS, unchanged */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Segoe UI", Arial, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #020024, #090979, #00d4ff);
+            color: #f9f9f9;
+
+            min-height: 100vh;
+        }
+
+        /* Navigation */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(2, 0, 36, 0.95);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4);
+        }
+
+        nav {
+            max-width: 1100px;
+            margin: auto;
+            padding: 0.8rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #00e6ff;
+        }
+
+        .nav-links a {
+            margin-left: 1.5rem;
+            text-decoration: none;
+            color: #f0f0f0;
+            font-size: 0.95rem;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -4px;
+
+            width: 0;
+            height: 2px;
+            background: #00e6ff;
+            transition: width 0.2s ease-in-out;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Layout container */
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 2rem 1.5rem 4rem;
+        }
+
+        section {
+            padding: 3rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-weight: 700;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        h2::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 40%;
+
+            height: 3px;
+            border-radius: 999px;
+            background: linear-gradient(90deg, #00e6ff, #8a2be2);
+        }
+
+        p {
+            line-height: 1.6;
+            margin-top: 0.5rem;
+            color: #ececec;
+        }
+
+        /* Hero section */
+        .hero {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.4fr);
+            gap: 2.5rem;
+            align-items: center;
+            min-height: 60vh;
+        }
+
+        .tag {
+
+            display: inline-block;
+            padding: 0.25rem 0.7rem;
+            border-radius: 999px;
+            border: 1px solid rgba(0, 230, 255, 0.6);
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 0.7rem;
+            color: #b5f8ff;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.4rem, 4vw, 3.2rem);
+            margin-bottom: 0.7rem;
+        }
+
+        .hero h1 span {
+            color: #00e6ff;
+        }
+
+        .hero-subtitle {
+            font-size: 1rem;
+
+            margin-bottom: 1rem;
+            color: #d6f5ff;
+        }
+
+        .hero-buttons {
+            margin-top: 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.9rem;
+        }
+
+        .btn {
+            padding: 0.6rem 1.4rem;
+            border-radius: 999px;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: transform 0.15s ease, box-shadow 0.15s ease,
+                background 0.2s ease, color 0.2s ease;
+
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #00e6ff, #8a2be2);
+            color: #020024;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.45);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px) scale(1.02);
+            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.6);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #f5f5f5;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+
+        .btn-outline:hover {
+            background: rgba(0, 0, 0, 0.3);
+            transform: translateY(-1px);
+        }
+
+        .hero-meta {
+            margin-top: 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            font-size: 0.8rem;
+        }
+
+        .hero-meta div span {
+            display: block;
+            opacity: 0.7;
+            font-size: 0.75rem;
+            margin-bottom: 0.1rem;
+        }
+
+        .hero-photo-wrapper {
+
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-photo {
+            width: 220px;
+            height: 220px;
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            background: radial-gradient(circle at 30% 20%, #ffffff 0, #00e6ff 20%, #020024 70%);
+            position: relative;
+            box-shadow: 0 18px 35px rgba(0, 0, 0, 0.75);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-photo-inner {
+            width: 82%;
+
+            height: 82%;
+            border-radius: inherit;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0.7rem;
+            font-size: 0.85rem;
+            backdrop-filter: blur(2px);
+            background: rgba(2, 0, 36, 0.5);
+        }
+
+        /* About section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+            gap: 2rem;
+        }
+
+        .highlight-box {
+            background: rgba(0, 0, 0, 0.35);
+            padding: 1.2rem 1.4rem;
+            border-radius: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 12px 26px rgba(0, 0, 0, 0.6);
+        }
+
+        .highlight-box h3 {
+            margin-bottom: 0.4rem;
+            font-size: 1.1rem;
+        }
+
+        .info-list {
+            list-style: none;
+            margin-top: 0.6rem;
+            font-size: 0.9rem;
+        }
+
+        .info-list li+li {
+
+            margin-top: 0.3rem;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .chip {
+            display: inline-block;
+            padding: 0.35rem 0.9rem;
+            border-radius: 999px;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            font-size: 0.8rem;
+            margin: 0.15rem 0.15rem 0 0;
+        }
+
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 1.4rem;
+            margin-top: 1rem;
+        }
+
+        .card {
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 1rem;
+            padding: 1.1rem 1.2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 12px 26px rgba(0, 0, 0, 0.7);
+            transition: transform 0.15s ease, box-shadow 0.15s ease,
+                border-color 0.15s ease;
+        }
+
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 18px 36px rgba(0, 0, 0, 0.9);
+            border-color: rgba(0, 230, 255, 0.8);
+        }
+
+        .card h3 {
+            font-size: 1rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .card span {
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+
+        /* Contact */
+        form {
+            margin-top: 1rem;
+            max-width: 520px;
+
+        }
+
+        label {
+            display: block;
+            font-size: 0.8rem;
+            margin-bottom: 0.2rem;
+            opacity: 0.9;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 0.6rem 0.75rem;
+            border-radius: 0.7rem;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            background: rgba(0, 0, 0, 0.4);
+            color: #fdfdfd;
+            font-size: 0.9rem;
+            outline: none;
+            margin-bottom: 0.8rem;
+        }
+
+        input:focus,
+        textarea:focus {
+
+            border-color: #00e6ff;
+            box-shadow: 0 0 0 1px rgba(0, 230, 255, 0.4);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 90px;
+        }
+
+        footer {
+            text-align: center;
+            font-size: 0.8rem;
+            padding: 1.5rem 0 0.5rem;
+            opacity: 0.7;
+        }
+
+        /* Responsive */
+        @media (max-width: 780px) {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-meta {
+                justify-content: center;
+            }
+
+            .hero-photo-wrapper {
+                order: -1;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                flex-direction: column;
+                gap: 0.4rem;
+            }
+
+            .nav-links a {
+                margin-left: 0.8rem;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav>
+            <div class="logo">Amit's Portfolio</div>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <!-- Hero / Home -->
+        <section id="home" class="hero">
+            <div>
+                <span class="tag">Student Portfolio</ span>
+                    <h1>Hi, I am <span>Amit Gajanan Gadekar</span></h1>
+                    <p class="hero-subtitle">
+                        A passionate student who loves building creative web pages and learning new technologies.
+                    </p>
+                    <p>
+                        This portfolio shows who I am, what I can do, and some of the projects I have built during my
+                        learning journey.
+                    </p>
+                    <div class="hero-buttons">
+                        <button class="btn btn-primary"
+                            onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'});">
+                            View My Projects
+                        </button>
+                        <button class="btn btn-outline"
+                            onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'});">
+
+                            Contact Me
+                        </button>
+                    </div>
+                    <div class="hero-meta">
+                        <div>
+                            <span>Interests</span>
+                            <strong>Learning New Skills With Advance Tech </strong>
+                        </div>
+                        <div>
+                            <span>College</span>
+                            <strong>Zeal Collage Of Engineering And Research</strong>
+                        </div>
+                    </div>
+            </div>
+
+            <div class="hero-photo-wrapper">
+                <div class="hero-photo">
+                    <div class="hero-photo-inner">
+                        <!-- Your image goes here -->
+                        <img src="image.jpg" alt="Amit Gajanan Gadekar"
+                            style="width:100%; height:100%; object-fit:cover; border-radius:inherit;">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About -->
+        <section id="about">
+            <h2>About Me</h2>
+            <div class="about-grid">
+                <div>
+                    <p>
+                        My name is Amit Gajanan Gadekar and I am a student who enjoys exploring technology, problem
+                        solving, and designing user-friendly websites.
+                    </p>
+                    <p>
+                        I am always curious to learn new skills and I love converting ideas into
+
+                        working projects that look clean and modern.
+                    </p>
+                </div>
+                <div class="highlight-box">
+                    <h3>Quick Details</h3>
+                    <ul class="info-list">
+                        <li><strong>Full Name:</strong> Amit Gajanan Gadekar</li>
+                        <li><strong>Date of Birth:</strong> DD / MM / YYYY</li>
+                        <li><strong>Class:</strong> Your Class / Section</li>
+                        <li><strong>City:</strong> Your City, Country</li>
+                        <li><strong>Interests:</strong> Web development, coding, design, gaming, music</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Skills -->
+        <section id="skills">
+            <h2>My Skills</h2>
+            <p>
+                These are some of the technologies and abilities that I am learning and improving every day.
+            </p>
+            <div class="skills-grid">
+                <div class="highlight-box">
+                    <h3>Technical Skills</h3>
+                    <div>
+                        <span class="chip">HTML</span>
+                        <span class="chip">CSS</span>
+                        <span class="chip">JavaScript (Basics)</span>
+                        <span class="chip">Responsive Design</span>
+                        <span class="chip">Git & GitHub (Basics)</span>
+                    </div>
+
+                </div>
+                <div class="highlight-box">
+                    <h3>Soft Skills</h3>
+                    <div>
+                        <span class="chip">Teamwork</span>
+                        <span class="chip">Communication</span>
+                        <span class="chip">Creativity</span>
+                        <span class="chip">Problem Solving</span>
+                        <span class="chip">Time Management</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects -->
+        <section id="projects">
+            <h2>My Projects</h2>
+
+            <p>
+                Here are a few sample projects that represent the type of work I like to build.
+                You can change these according to your own projects.
+            </p>
+            <div class="projects-grid">
+                <article class="card">
+                    <h3>Cool Portfolio Website</h3>
+                    <span>HTML • CSS</span>
+                    <p>
+                        A clean and modern personal portfolio web page created using only HTML and CSS with a responsive
+                        layout.
+                    </p>
+                </article>
+
+                <article class="card">
+                    <h3>School Timetable Page</h3>
+                    <span>HTML • Table Layout</span>
+                    <p>
+                        A simple but useful web page that
+
+                        displays a weekly class timetable with different colors for each subject.
+                    </p>
+                </article>
+
+                <article class="card">
+                    <h3>Science Project Page</h3>
+                    <span>HTML • Images • Links</span>
+                    <p>
+                        A project explanation page that uses images, headings, and links to describe a science
+                        experiment clearly.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact">
+            <h2>Contact Me</h2>
+            <p>
+                If you want to contact me about any
+
+                project, idea, or feedback, you can fill this simple form.
+            </p>
+            <form>
+                <label for="name">Your Name</label>
+                <input id="name" type="text" placeholder="Enter your name" required />
+
+                <label for="email">Your Email</label>
+                <input id="email" type="email" placeholder="Enter your email" required />
+
+                <label for="message">Message</label>
+                <textarea id="message" placeholder="Write your message here"></textarea>
+
+                <button type="submit" class="btn btn-primary">Send Message</button>
+            </form>
+        </section>
+
+    </div>
+
+    <footer>
+        © <span id="year"></span> Amit Gajanan Gadekar • Made with HTML & CSS
+    </footer>
+
+    <script>
+        // Set current year in footer
+        document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
